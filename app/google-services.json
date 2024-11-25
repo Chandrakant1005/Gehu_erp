@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "306125084476",
+    "project_id": "erp-gehu-837d3",
+    "storage_bucket": "erp-gehu-837d3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306125084476:android:de21d386378569433bf039",
+        "android_client_info": {
+          "package_name": "com.danu.gehu_erp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpq_ESxqbii5_CI7Oep9Ea3MCzDz7BEQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

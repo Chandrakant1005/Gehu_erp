@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- No background color, just transparent -->
+    <item>
+        <shape>
+            <corners android:radius="13dp"/>
+        </shape>
+    </item>
+</layer-list>

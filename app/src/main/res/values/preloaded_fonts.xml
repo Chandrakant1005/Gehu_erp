@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/aclonica</item>
+        <item>@font/adamina</item>
+        <item>@font/alumni_sans_collegiate_one</item>
+        <item>@font/alumni_sans_inline_one</item>
+        <item>@font/caprasimo</item>
+        <item>@font/comfortaa_bold</item>
+        <item>@font/convergence</item>
+        <item>@font/denk_one</item>
+        <item>@font/koulen</item>
+    </array>
+</resources>

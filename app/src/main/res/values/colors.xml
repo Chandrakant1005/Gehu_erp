@@ -2,6 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="my_light_primary">#FFFFFFFF</color>
-    <color name="my_light_secondary">#000000</color>
+
+    <color name="brandl1">#ACFFF1</color>
+    <color name="brandl2">#7AF8E3</color>
+    <color name="brandl3">#4EECD2</color>
+    <color name="brand">#24D2B5</color>
+    <color name="brandd1">#1BB69C</color>
+    <color name="brandd2">#10947E</color>
+    <color name="brandd3">#006B59</color>
+    <color name="success">#008911</color>
+    <color name="warning_back">#FAC0C0</color>
+    <color name="warning">#B10707</color>
+    <color name="success_back">#CAFDCD</color>
+
+
+
 </resources>

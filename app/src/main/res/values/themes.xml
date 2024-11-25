@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Gehu_erp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorSecondary">@color/my_light_secondary</item>
+        <item name="colorPrimary">#59BFD0</item>
+
     </style>
 
     <style name="Theme.Gehu_erp" parent="Base.Theme.Gehu_erp" />
