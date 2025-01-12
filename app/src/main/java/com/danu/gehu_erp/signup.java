@@ -2,8 +2,10 @@ package com.danu.gehu_erp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +18,11 @@ import com.google.android.gms.tasks.Task;
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class signup extends AppCompatActivity {
+    private ProgressBar progressBar;
     TextView login_link;
     EditText E_mail,Pass,Confirm_pass;
     Button signup_Button;;
@@ -32,6 +36,7 @@ public class signup extends AppCompatActivity {
         Pass = findViewById(R.id.editTextTextPassword);
         Confirm_pass = findViewById(R.id.editTextTextPassword2);
         signup_Button = findViewById(R.id.button);
+        progressBar = findViewById(R.id.progressBar);
         auth = FirebaseAuth.getInstance();
         login_link.setOnClickListener(v -> {
             Intent intent = new Intent(signup.this, login.class);
@@ -47,7 +52,7 @@ public class signup extends AppCompatActivity {
                 Toast.makeText(signup.this, "Password and confirm password do not match", Toast.LENGTH_SHORT).show();
             }else{
                 registration(email,password);
-                Toast.makeText(signup.this, "Sign up successful", Toast.LENGTH_SHORT).show();
+
             }
 
         });
@@ -56,12 +61,21 @@ public class signup extends AppCompatActivity {
     }
 
     private void registration(String email,String password){
+        progressBar.setVisibility(View.VISIBLE);
+        signup_Button.setVisibility(View.INVISIBLE);
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(signup.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(signup.this, login.class);
+                            progressBar.setVisibility(View.INVISIBLE);
+                            signup_Button.setVisibility(View.VISIBLE);
+                            FirebaseUser user = auth.getCurrentUser();
+                            Bundle uid = new Bundle();
+                            uid.putString("uid",user.getUid());
+                            Toast.makeText(signup.this, "Sign up successful", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(signup.this, profile_page.class);
+                            intent.putExtras(uid);
                             startActivity(intent);
                         } else {
                             Toast.makeText(signup.this, "Sign up failed", Toast.LENGTH_SHORT).show();

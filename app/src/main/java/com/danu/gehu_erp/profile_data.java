@@ -1,9 +1,8 @@
 package com.danu.gehu_erp;
 
 public class profile_data {
-    private boolean saved_or_not=false;
-    private String f_name;
-    private String l_name;
+    private String profileImageUrl;
+    public String _fname;
     private String email;
     private String phone;
     private String course;
@@ -11,27 +10,23 @@ public class profile_data {
     private String year;
     private String semester;
 
+
     public profile_data(){};
 
-    public profile_data(String f_name, String l_name, String email, String phone, String course, String specialization, String year, String semester, boolean saved_or_not) {
-        this.f_name = f_name;
-        this.l_name = l_name;
+    public profile_data(String ImageUrl,String fname,String email, String phone, String course, String specialization, String year, String semester) {
+        this.profileImageUrl = ImageUrl;
+        this._fname = fname;
         this.email = email;
         this.phone = phone;
         this.course = course;
         this.specialization = specialization;
         this.year = year;
         this.semester = semester;
-        this.saved_or_not = saved_or_not;
-
     }
 
-    public String getf_name() {
-        return f_name;
-    }
-    public String getl_name() {
-        return l_name;
-    }
+    //getters
+    public String getProfileImageUrl(){return profileImageUrl;}
+    public String getFname(){return _fname;}
     public String get_email() {
         return email;
     }
@@ -50,14 +45,11 @@ public class profile_data {
     public String get_phone() {
         return phone;
     }
-    public boolean get_saved_or_not() {
-        return saved_or_not;
-    }
-    public void setf_name(String f_name) {
-        this.f_name = f_name;
-    }
-    public void setl_name(String l_name) {
-        this.l_name = l_name;
+
+    //setters
+    public void setProfileImageUrl(String url){this.profileImageUrl = url;}
+    public void set_fname(String f_name) {
+        this._fname = f_name;
     }
     public void set_email(String email) {
         this.email = email;
@@ -77,7 +69,5 @@ public class profile_data {
     public void set_phone(String phone) {
         this.phone = phone;
     }
-    public void set_saved_or_not(boolean saved_or_not) {
-        this.saved_or_not = saved_or_not;
-    }
+
 }

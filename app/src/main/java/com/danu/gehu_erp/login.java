@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class login extends AppCompatActivity {
+    private ProgressBar progressBar;
     TextView sign_link;
     Button login_button;
     EditText email,password;
@@ -36,6 +38,7 @@ public class login extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseDatabase db;
     DatabaseReference db_ref;
+    Bundle uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,7 @@ public class login extends AppCompatActivity {
         email = findViewById(R.id.Email_edit);
         password = findViewById(R.id.Password_edit);
         forgot_pass = findViewById(R.id.textView3);
+        progressBar = findViewById(R.id.progressBar);
         auth = FirebaseAuth.getInstance();
         db=FirebaseDatabase.getInstance();
         sign_link.setOnClickListener(view -> {
@@ -63,36 +67,23 @@ public class login extends AppCompatActivity {
                 if (email_text.isEmpty() || password_text.isEmpty()) {
                    toast_warning(layout,"Please fill required fields !!!");
                 }else{
+                    progressBar.setVisibility(View.VISIBLE);
+                    login_button.setVisibility(View.INVISIBLE);
                     auth.signInWithEmailAndPassword(email_text, password_text).addOnCompleteListener(login.this,
                             new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
+                                    progressBar.setVisibility(View.INVISIBLE);
+                                    login_button.setVisibility(View.VISIBLE);
                                     if (task.isSuccessful()) {
+
                                         toast_sucess(layout);
                                         FirebaseUser user = auth.getCurrentUser();
-                                        db_ref = db.getReference("Users/"+user.getUid());
-                                        db_ref.addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                if (snapshot.exists()){
-                                                    profile_data data = snapshot.getValue(profile_data.class);
-                                                    if (data.get_saved_or_not()){
-                                                        Log.e("saved","true");
-                                                        startActivity(new Intent(login.this, dashboard.class));
-                                                    }else{
-                                                        Log.e("saved","false");
-                                                        startActivity(new Intent(login.this, profile_page.class));
-                                                    }
-                                                }
-
-                                            }
-
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-                                                Log.e("Error",error.getMessage());
-
-                                            }
-                                        });
+                                        uid = new Bundle();
+                                        uid.putString("uid", user.getUid());
+                                        Intent intent = new Intent(login.this, dashboard.class);
+                                        intent.putExtras(uid);
+                                        startActivity(intent);
 
 
                                     }else{

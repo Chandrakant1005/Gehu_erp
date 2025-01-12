@@ -14,9 +14,10 @@
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772">
+        app:layout_constraintVertical_bias="0.439">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -52,10 +53,25 @@
         android:id="@+id/constraintLayout"
         android:layout_width="350dp"
         android:layout_height="514dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="325dp"
+            android:layout_height="61dp"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:background="@drawable/edit_text"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.253" />
 
         <TextView
             android:id="@+id/textView"
@@ -128,6 +144,7 @@
             android:elevation="100dp"
             android:onClick="login_user"
             android:text="Login"
+            android:visibility="visible"
             android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"

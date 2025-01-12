@@ -26,6 +26,7 @@ public class forgot_password extends AppCompatActivity {
     Button button;
     TextView login;
     FirebaseAuth auth;
+    ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,11 @@ public class forgot_password extends AppCompatActivity {
         login = findViewById(R.id.textView10);
         email = findViewById(R.id.editTextTextEmailAddress);
         button = findViewById(R.id.button2);
+        back = findViewById(R.id.imageView8);
         auth = FirebaseAuth.getInstance();
+        back.setOnClickListener(view->{
+            startActivity(new Intent(forgot_password.this, login.class));
+        });
         login.setOnClickListener(view ->{
             startActivity(new Intent(forgot_password.this, login.class));
         } );

@@ -32,9 +32,17 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation("io.appwrite:sdk-for-android:6.1.0")
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+    implementation(libs.okhttp)
+    implementation (libs.picasso)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -43,6 +51,11 @@ dependencies {
     implementation(libs.legacy.support.v4)
     implementation(libs.compose.theme.adapter)
     implementation(libs.firebase.database)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
